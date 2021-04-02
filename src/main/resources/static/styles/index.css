@@ -1,0 +1,53 @@
+html, body, header, #intro {
+    height: 100%;
+}
+
+.img {
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hr-light {
+    color: white;
+}
+
+.carousel-work {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.carousel-item:after {
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: linear-gradient(0deg, #151515, transparent 25%)
+}
+
+.carousel-caption-overlay {
+    z-index: 999;
+}
+
+#carouselMyWork > * {
+    transition: 500ms opacity;
+}
+
+#carouselMyWork > .carousel-inner .carousel-item * {
+    transition: 500ms opacity;
+}
+
+#carouselMyWork:hover > .carousel-indicators {
+    opacity: 0;
+}
+
+#carouselMyWork:hover > .carousel-inner .carousel-item .carousel-caption {
+    opacity: 0;
+}
+
+
