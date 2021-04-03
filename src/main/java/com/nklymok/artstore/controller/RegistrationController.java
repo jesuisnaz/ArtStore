@@ -34,6 +34,8 @@ public class RegistrationController {
         if (userService.existsByEmail(user.getEmail())) {
             return "/register?emailExists";
         }
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
         userService.saveUser(user);
         System.out.println("Successful registration!");
 

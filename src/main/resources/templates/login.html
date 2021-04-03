@@ -37,7 +37,7 @@
         <p>You've been successfully logged out.</p>
     </div>
     <div class="container text-center alert alert-danger" th:if="${param.error}">
-        <p>Invalid user name (email) or password.</p>
+        <p>Invalid email or password.</p>
     </div>
     <div style="padding-top: 75px; position: relative" class="container">
         <section class="loginForm my-4 mx-5">
@@ -49,7 +49,7 @@
                         <form method="POST" th:action="@{/login}">
                             <div class="form-row">
                                 <div class="col-lg">
-                                    <input th:name="username" class="form-control my-4 p-2" type="text" placeholder="Email">
+                                    <input th:name="username" class="form-control my-4 p-2" type="email" placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-row">

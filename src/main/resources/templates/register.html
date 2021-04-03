@@ -55,23 +55,36 @@
                         <h1 class="font-weight-bold">ArtStore Mair</h1>
                         <h4 class="font-weight-bold">Create a new account</h4>
                         <form method="POST" th:action="@{/register}">
-                            <div class="form-row">
-                                <div class="col-lg">
-                                    <input th:name="username" class="form-control my-4 p-2" type="text" placeholder="User Name">
+                            <div class="form-row d-flex flex-row">
+                                <div class="col-md me-1">
+                                    <input th:name="firstName" class="form-control mt-4 p-2" type="text" placeholder="First Name">
+                                </div>
+                                <div class="col-md ms-auto">
+                                    <input th:name="lastName" class="form-control mt-4 p-2" type="text" placeholder="Last Name">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg">
-                                    <input th:name="email" class="form-control my-4 p-2" type="text" placeholder="Email">
+                                    <input th:name="username" class="form-control my-4 p-2" type="text" placeholder="Your User Name">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg">
-                                    <input th:name="password" class="form-control my-4 p-2" type="password" placeholder="********">
+                                    <input th:name="email" class="form-control my-4 p-2" type="email" placeholder="Your Email">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <input type="submit" class="button-login form-control form-control-lg mt-3 mb-5" value="Sign Up">
+                                <div class="col-lg">
+                                    <input id="password" th:name="password" class="form-control my-4 p-2" type="password" placeholder="Your Password" onchange="check_pass()">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg">
+                                    <input id="c_password" class="form-control my-4 p-2" type="password" placeholder="Confirm Password" onchange="check_pass()">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <input id="submitButton" type="submit" class="button-login form-control form-control-lg mt-3 mb-5" value="Sign Up" disabled>
                             </div>
                             <p class="text-center text-dark">Already have an account? <a th:href="@{/register}">Log in here</a>.</p>
                         </form>
@@ -116,4 +129,5 @@
 
 <script type="application/javascript" th:src="@{/js/vendored/mdb.min.js}"></script>
 <script type="application/javascript" th:src="@{/js/vendored/bootstrap.min.js}"></script>
+<script type="application/javascript" th:src="@{/js/registration.js}"></script>
 </html>

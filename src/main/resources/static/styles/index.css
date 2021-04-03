@@ -88,8 +88,12 @@ body {
     transition: background-color 250ms;
 }
 
-.button-login:hover {
+.button-login:enabled:hover {
     background-color: white;
     border: 1px solid;
+    color: black;
+}
+
+.button-login:disabled {
     color: black;
 }

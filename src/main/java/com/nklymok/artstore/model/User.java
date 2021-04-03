@@ -23,6 +23,16 @@ public class User {
     private String username;
 
     @NotBlank
+    @Length(min = 2, max = 30)
+    @Column(name = "first_name")
+    private String firstName;
+
+    @NotBlank
+    @Length(min = 2, max = 30)
+    @Column(name = "last_name")
+    private String lastName;
+
+    @NotBlank
     @Email
     @Column(name = "email")
     private String email;
