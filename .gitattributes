@@ -1,2 +1,2 @@
-bootstrap.min.css linguist-vendored
-mdb.min.css linguist-vendored
+bootstrap.min.css -linguist-vendored
+mdb.min.css -linguist-vendored
