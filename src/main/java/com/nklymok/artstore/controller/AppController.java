@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class AppController {
 
-    @GetMapping("index")
+    @GetMapping
     public String showLanding() {
         return "index";
     }
