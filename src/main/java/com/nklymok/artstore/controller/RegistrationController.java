@@ -17,12 +17,7 @@ import javax.validation.Valid;
 @RequestMapping("/register")
 public class RegistrationController {
 
-    private final UserService userService;
-
-    @Autowired
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @GetMapping
     public String showRegister(@ModelAttribute("user") User user) {
@@ -45,4 +40,8 @@ public class RegistrationController {
         return "redirect:/register?success";
     }
 
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }
