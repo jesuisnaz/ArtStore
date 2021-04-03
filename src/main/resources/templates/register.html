@@ -48,13 +48,36 @@
         <p>User with such email already exists</p>
     </div>
     <div style="padding-top: 75px; position: relative" class="container">
-        <section id="loginForm">
-            <form th:object="${user}" method="POST" th:action="@{/register}">
-                <input th:field="*{username}" class="form-control" type="text" placeholder="User Name">
-                <input th:field="*{email}" class="form-control" type="text" placeholder="Email">
-                <input th:field="*{password}" class="form-control" type="password" placeholder="********">
-                <input type="submit" class="form-control form-control-lg">
-            </form>
+        <section class="loginForm my-4 mx-5">
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="col-lg-7 px-5 pt-5">
+                        <h1 class="font-weight-bold">ArtStore Mair</h1>
+                        <h4 class="font-weight-bold">Create a new account</h4>
+                        <form method="POST" th:action="@{/register}">
+                            <div class="form-row">
+                                <div class="col-lg">
+                                    <input th:name="username" class="form-control my-4 p-2" type="text" placeholder="User Name">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg">
+                                    <input th:name="email" class="form-control my-4 p-2" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg">
+                                    <input th:name="password" class="form-control my-4 p-2" type="password" placeholder="********">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <input type="submit" class="button-login form-control form-control-lg mt-3 mb-5" value="Sign Up">
+                            </div>
+                            <p class="text-center text-dark">Already have an account? <a th:href="@{/register}">Log in here</a>.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </main>
