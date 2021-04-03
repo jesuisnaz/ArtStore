@@ -28,8 +28,8 @@ public class User {
     private String email;
 
     @NotBlank
-    @Length(min = 6, max = 255)
-    @Column(name = "password")
+    @Length(min = 6)
+    @Column(name = "password", length = 500)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
