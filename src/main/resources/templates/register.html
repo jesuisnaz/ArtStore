@@ -35,11 +35,11 @@
 <main class="mt-5">
     <div style="padding-top: 75px; position: relative" class="container">
         <section id="loginForm">
-            <form th:object="${user}" method="POST" th:action="@{/login}">
+            <form th:object="${user}" method="POST" th:action="@{/register}">
+                <input th:field="*{username}" class="form-control" type="text" placeholder="User Name">
                 <input th:field="*{email}" class="form-control" type="text" placeholder="Email">
                 <input th:field="*{password}" class="form-control" type="text" placeholder="********">
                 <input type="submit" class="form-control form-control-lg">
-                <p class="text-secondary">New user? <a th:href="@{/register}">Register here</a>.</p>
             </form>
         </section>
     </div>

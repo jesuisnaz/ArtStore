@@ -14,32 +14,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/register")
-public class RegistrationController {
+@RequestMapping("/login")
+public class LoginController {
 
     private final UserService userService;
 
     @Autowired
-    public RegistrationController(UserService userService) {
+    public LoginController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
-    public String showRegister(@ModelAttribute("user") User user) {
-        return "register";
+    public String showLogin(@ModelAttribute("user") User user) {
+        return "login";
     }
 
     @PostMapping
-    public String registerUser(@ModelAttribute("user") @Valid User user,
-                               BindingResult bindingResult) throws UserAlreadyExistsException {
-        if (bindingResult.hasErrors()) {
-            System.out.println("Errors during validation:");
-            bindingResult.getAllErrors().forEach(System.out::println);
-            return "register";
+    public String loginUser(@ModelAttribute("user") User user) {
+        if (user.getEmail() == null || user.getPassword() == null) {
+            System.out.println("Errors during validation: something is null");
+            return "login";
         }
-        userService.saveUser(user);
+        if (!userService.correctCredentials(user)) {
+            System.out.println("Incorrect credentials or user does not exist");
+            return "login";
+        }
         System.out.println("Success!");
-
         return "redirect:/";
     }
 

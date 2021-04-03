@@ -1,8 +1,12 @@
 package com.nklymok.artstore.model;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 
@@ -16,14 +20,17 @@ public class User {
     private Long id;
 
     @NotBlank
+    @Length(min = 3, max = 30)
     @Column(name = "username")
     private String username;
 
     @NotBlank
+    @Email
     @Column(name = "email")
     private String email;
 
     @NotBlank
+    @Length(min = 6, max = 30)
     @Column(name = "password")
     private String password;
 

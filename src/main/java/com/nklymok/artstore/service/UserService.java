@@ -27,4 +27,10 @@ public class UserService {
         return repository.findByEmail(email) != null;
     }
 
+    public boolean correctCredentials(User user) {
+        User validUser = repository.findByEmail(user.getEmail());
+        if (validUser == null) return false;
+        return validUser.getEmail().equals(user.getEmail())
+                && validUser.getPassword().equals(user.getPassword());
+    }
 }
