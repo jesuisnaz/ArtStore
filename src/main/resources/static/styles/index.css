@@ -35,11 +35,11 @@ html, body, header, #intro {
 }
 
 #carouselMyWork > * {
-    transition: 500ms opacity;
+    transition: 250ms opacity;
 }
 
 #carouselMyWork > .carousel-inner .carousel-item * {
-    transition: 500ms opacity;
+    transition: 250ms opacity;
 }
 
 #carouselMyWork:hover > .carousel-indicators {
@@ -53,4 +53,16 @@ html, body, header, #intro {
 #bgBanner {
     height: 100vh;
     object-fit: cover;
+}
+
+@media (max-width: 1050px) {
+    #carouselMyWork {
+        width: 75%;
+    }
+}
+
+@media (max-width: 600px) {
+    #carouselMyWork {
+        width: 100%;
+    }
 }
