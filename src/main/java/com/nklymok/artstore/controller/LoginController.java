@@ -25,22 +25,8 @@ public class LoginController {
     }
 
     @GetMapping
-    public String showLogin(@ModelAttribute("user") User user) {
+    public String showLogin() {
         return "login";
-    }
-
-    @PostMapping
-    public String loginUser(@ModelAttribute("user") User user) {
-        if (user.getEmail() == null || user.getPassword() == null) {
-            System.out.println("Errors during validation: something is null");
-            return "login";
-        }
-        if (!userService.correctCredentials(user)) {
-            System.out.println("Incorrect credentials or user does not exist");
-            return "login";
-        }
-        System.out.println("Success!");
-        return "redirect:/";
     }
 
 }

@@ -33,12 +33,26 @@
     </nav>
 </header>
 <main class="mt-5">
+    <div class="container text-center alert alert-info" th:if="${param.success}">
+        <p>You successfully registered! Log in <a th:href="@{/login}">here</a>.</p>
+    </div>
+    <div class="container text-center alert alert-danger" th:if="${param.error}">
+        <p>Invalid input. Please, make sure that: </p>
+        <ul style="display:inline-block; vertical-align:middle; list-style-type: none">
+            <li>User name has at least 3 characters, but not more than 30 characters</li>
+            <li>Password has at least 6 characters, but not more than 30 characters</li>
+            <li>Email is correct</li>
+        </ul>
+    </div>
+    <div class="container text-center alert alert-danger" th:if="${param.emailExists}">
+        <p>User with such email already exists</p>
+    </div>
     <div style="padding-top: 75px; position: relative" class="container">
         <section id="loginForm">
             <form th:object="${user}" method="POST" th:action="@{/register}">
                 <input th:field="*{username}" class="form-control" type="text" placeholder="User Name">
                 <input th:field="*{email}" class="form-control" type="text" placeholder="Email">
-                <input th:field="*{password}" class="form-control" type="text" placeholder="********">
+                <input th:field="*{password}" class="form-control" type="password" placeholder="********">
                 <input type="submit" class="form-control form-control-lg">
             </form>
         </section>

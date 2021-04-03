@@ -33,14 +33,16 @@ public class RegistrationController {
     public String registerUser(@ModelAttribute("user") @Valid User user,
                                BindingResult bindingResult) throws UserAlreadyExistsException {
         if (bindingResult.hasErrors()) {
-            System.out.println("Errors during validation:");
             bindingResult.getAllErrors().forEach(System.out::println);
-            return "register";
+            return "/register?error";
+        }
+        if (userService.existsByEmail(user.getEmail())) {
+            return "/register?emailExists";
         }
         userService.saveUser(user);
-        System.out.println("Success!");
+        System.out.println("Successful registration!");
 
-        return "redirect:/";
+        return "redirect:/register?success";
     }
 
 }

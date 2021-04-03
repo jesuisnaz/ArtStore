@@ -33,11 +33,17 @@
     </nav>
 </header>
 <main class="mt-5">
+    <div class="container text-center alert alert-danger" th:if="${param.logout}">
+        <p>You've been successfully logged out.</p>
+    </div>
+    <div class="container text-center alert alert-danger" th:if="${param.error}">
+        <p>Invalid user name (email) or password.</p>
+    </div>
     <div style="padding-top: 75px; position: relative" class="container">
         <section id="loginForm">
-            <form th:object="${user}" method="POST" th:action="@{/login}">
-                <input th:field="*{email}" class="form-control" type="text" placeholder="Email">
-                <input th:field="*{password}" class="form-control" type="text" placeholder="********">
+            <form method="POST" th:action="@{/login}">
+                <input th:id="username" th:name="username" class="form-control" type="text" placeholder="Email">
+                <input th:id="password" th:name="password" class="form-control" type="password" placeholder="********">
                 <input type="submit" class="form-control form-control-lg">
                 <p class="text-secondary">New user? <a th:href="@{/register}">Register here</a>.</p>
             </form>
