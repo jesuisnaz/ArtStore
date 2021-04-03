@@ -29,7 +29,7 @@ public class User {
 
     @NotBlank
     @Length(min = 6)
-    @Column(name = "password", length = 500)
+    @Column(name = "password", length = 255)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

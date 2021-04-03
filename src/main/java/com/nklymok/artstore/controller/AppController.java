@@ -13,4 +13,9 @@ public class AppController {
         return "index";
     }
 
+    @GetMapping("admin")
+    public String showAdminPanel() {
+        return "admin";
+    }
+
 }
