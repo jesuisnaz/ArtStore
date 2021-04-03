@@ -50,4 +50,7 @@ html, body, header, #intro {
     opacity: 0;
 }
 
-
+#bgBanner {
+    height: 100vh;
+    object-fit: cover;
+}
