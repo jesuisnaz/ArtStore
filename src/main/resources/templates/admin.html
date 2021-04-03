@@ -1,6 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link href="#" th:href="@{/styles/bootstrap.min.css}" rel="stylesheet">
@@ -28,7 +29,11 @@
                     </li>
                 </ul>
             </div>
-            <a class="fa fa-user text-white" th:href="@{/login}"></a>
+            <ul class="navbar navbar-nav ms-auto">
+                <a sec:authorize="!isAuthenticated()" class="fa fa-user text-white" th:href="@{/login}"></a>
+                <a sec:authorize="hasRole('ADMIN')" class="fa fa-cogs text-white mx-3" th:href="@{/admin}"></a>
+                <a sec:authorize="isAuthenticated()" class="ml text-white" th:href="@{/logout}">Log out</a>
+            </ul>
         </div>
     </nav>
 </header>

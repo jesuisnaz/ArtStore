@@ -33,20 +33,57 @@
     </nav>
 </header>
 <main class="mt-5">
-    <div class="container text-center alert alert-danger" th:if="${param.logout}">
+    <div class="container text-center alert alert-info" th:if="${param.logout}">
         <p>You've been successfully logged out.</p>
     </div>
     <div class="container text-center alert alert-danger" th:if="${param.error}">
         <p>Invalid user name (email) or password.</p>
     </div>
     <div style="padding-top: 75px; position: relative" class="container">
-        <section id="loginForm">
-            <form method="POST" th:action="@{/login}">
-                <input th:id="username" th:name="username" class="form-control" type="text" placeholder="Email">
-                <input th:id="password" th:name="password" class="form-control" type="password" placeholder="********">
-                <input type="submit" class="form-control form-control-lg">
-                <p class="text-secondary">New user? <a th:href="@{/register}">Register here</a>.</p>
-            </form>
+        <section class="loginForm my-4 mx-5">
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="col-lg-7 px-5 pt-5">
+                        <h1 class="font-weight-bold">ArtStore Mair</h1>
+                        <h4 class="font-weight-bold">Sign into your account</h4>
+                        <form method="POST" th:action="@{/login}">
+                            <div class="form-row">
+                                <div class="col-lg">
+                                    <input th:name="username" class="form-control my-4 p-2" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg">
+                                    <input th:name="password" class="form-control my-4 p-2" type="password" placeholder="********">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-lg-7">
+                                    <label>
+                                        <input th:name="remember-me" type="checkbox">
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <input type="submit" class="button-login form-control form-control-lg mt-3 mb-5" value="Log In">
+                            </div>
+                            <p class="text-center text-dark">New user? <a th:href="@{/register}">Register here</a>.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+<!--            &lt;!&ndash; Below is legacy &ndash;&gt;-->
+<!--            <form method="POST" th:action="@{/login}">-->
+<!--                <input th:name="username" class="form-control" type="text" placeholder="Email">-->
+<!--                <input th:name="password" class="form-control" type="password" placeholder="********">-->
+<!--                <label>-->
+<!--                    <input th:name="remember-me" type="checkbox">-->
+<!--                    Remember Me-->
+<!--                </label>-->
+<!--                <input type="submit" class="form-control form-control-lg">-->
+<!--                <p class="text-secondary">New user? <a th:href="@{/register}">Register here</a>.</p>-->
+<!--            </form>-->
         </section>
     </div>
 </main>
