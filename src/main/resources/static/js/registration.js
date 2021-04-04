@@ -1,5 +1,8 @@
-function check_pass() {
+function checkPass() {
+    const pw = document.getElementById('password').value;
+    const conf_pw = document.getElementById('c_password').value;
     document.getElementById('submitButton').disabled =
-        document.getElementById('password').value !== document.getElementById('c_password').value;
-
+        pw.empty ||
+        pw.length < 6 ||
+        pw !== conf_pw;
 }

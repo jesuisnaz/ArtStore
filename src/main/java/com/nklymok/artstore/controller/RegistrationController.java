@@ -5,6 +5,7 @@ import com.nklymok.artstore.model.User;
 import com.nklymok.artstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,10 +30,10 @@ public class RegistrationController {
                                BindingResult bindingResult) throws UserAlreadyExistsException {
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(System.out::println);
-            return "/register?error";
+            return "redirect:/register?error";
         }
         if (userService.existsByEmail(user.getEmail())) {
-            return "/register?emailExists";
+            return "redirect:/register?emailExists";
         }
         System.out.println(user.getEmail());
         System.out.println(user.getPassword());
