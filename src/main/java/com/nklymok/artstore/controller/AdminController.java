@@ -5,12 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class AppController {
+@RequestMapping("/admin")
+public class AdminController {
 
     @GetMapping
-    public String showLanding() {
-        return "index";
+    public String showAdminPanel() {
+        return "admin";
+    }
+
+    @GetMapping("/edit_featured")
+    public String showEditFeatured() {
+        return "edit_featured";
     }
 
 }
