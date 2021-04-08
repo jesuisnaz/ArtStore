@@ -1,5 +1,6 @@
 package com.nklymok.artstore.config;
 
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
@@ -16,11 +17,10 @@ public class S3Configuration {
 
     @Bean
     public AmazonS3 getAmazonS3Client() {
-        ProfileCredentialsProvider provider = new ProfileCredentialsProvider();
         return AmazonS3ClientBuilder
                 .standard()
                 .withRegion(Regions.fromName(region))
-                .withCredentials(provider)
+                .withCredentials(DefaultAWSCredentialsProviderChain.getInstance())
                 .build();
     }
 
