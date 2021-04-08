@@ -17,8 +17,6 @@ public class S3Configuration {
     @Bean
     public AmazonS3 getAmazonS3Client() {
         ProfileCredentialsProvider provider = new ProfileCredentialsProvider();
-        System.out.println(provider.getCredentials().getAWSSecretKey());
-        System.out.println(provider.getCredentials().getAWSAccessKeyId());
         return AmazonS3ClientBuilder
                 .standard()
                 .withRegion(Regions.fromName(region))
