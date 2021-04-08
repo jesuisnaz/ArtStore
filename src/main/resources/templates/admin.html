@@ -44,36 +44,40 @@
         <!--Featured pictures-->
         <div class="container text-center">
             <h5 class="mb-4 font-weight-bold">Featured Pictures</h5>
-            <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center align-items-center">
-                <div class="col d-flex justify-content-center">
+            <form action="/admin/add_featured" enctype="multipart/form-data" method="POST">
+                <input type="file" name="file" value="Choose file">
+                <input type="submit" value="Upload">
+            </form>
+<!--            <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center align-items-center">-->
+<!--                <div class="col d-flex justify-content-center">-->
 
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body"> <!-- dimensions in image -->
-                            <h5 class="card-title">Basic (<30x30)</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">$80</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Standard (<50x50)</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">$168.99</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Premium (Up to 100x100)</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">$359.99</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--                    <div class="card" style="width: 18rem;">-->
+<!--                        <div class="card-body"> &lt;!&ndash; dimensions in image &ndash;&gt;-->
+<!--                            <h5 class="card-title">Basic (<30x30)</h5>-->
+<!--                            <h6 class="card-subtitle mb-2 text-muted">$80</h6>-->
+<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col d-flex justify-content-center">-->
+<!--                    <div class="card" style="width: 18rem;">-->
+<!--                        <div class="card-body">-->
+<!--                            <h5 class="card-title">Standard (<50x50)</h5>-->
+<!--                            <h6 class="card-subtitle mb-2 text-muted">$168.99</h6>-->
+<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col d-flex justify-content-center">-->
+<!--                    <div class="card" style="width: 18rem;">-->
+<!--                        <div class="card-body">-->
+<!--                            <h5 class="card-title">Premium (Up to 100x100)</h5>-->
+<!--                            <h6 class="card-subtitle mb-2 text-muted">$359.99</h6>-->
+<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
     </div>
