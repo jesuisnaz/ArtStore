@@ -39,40 +39,45 @@
 </header>
 <main class="mt-5">
     <div class="container text-center">
-        <p>Admin Panel</p>
+        <h2 class="p-5 mb-4 font-weight-bolder">Admin Tools</h2>
+
+        <!--Featured pictures-->
+        <div class="container text-center">
+            <h5 class="mb-4 font-weight-bold">Featured Pictures</h5>
+            <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center align-items-center">
+                <div class="col d-flex justify-content-center">
+
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body"> <!-- dimensions in image -->
+                            <h5 class="card-title">Basic (<30x30)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">$80</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Standard (<50x50)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">$168.99</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium (Up to 100x100)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">$359.99</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </main>
-<footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-            <!-- Instagram -->
-            <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/mairnart" target="_blank"
-               role="button"
-            ><i class="fab fa-instagram"></i></a>
-
-            <!-- Linkedin -->
-            <a class="btn btn-outline-light btn-floating m-1"
-               href="https://www.linkedin.com/in/mariana-leschenko-0521291b5/" target="_blank" role="button"
-            ><i class="fab fa-linkedin-in"></i></a>
-
-            <!-- ArtStation -->
-            <a class="btn btn-outline-light btn-floating m-1"
-               href="https://www.artstation.com/mair" target="_blank" role="button"
-            ><i class="fab fa-artstation"></i></a>
-        </section>
-        <!-- Section: Social media -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2021 Copyright:
-        Mariana Leshchenko
-    </div>
-    <!-- Copyright -->
-</footer>
 </body>
 
 <script type="application/javascript" th:src="@{/js/vendored/mdb.min.js}"></script>
