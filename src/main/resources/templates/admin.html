@@ -74,8 +74,8 @@
                     <div class="carousel-item" th:each="image, stat : ${featuredImages}" th:classappend="${stat.index == 0 ? 'active' : ''}">
                         <img th:src="*{'data:image/jpeg;base64,'+image.getValueBase64()}" class="d-block w-100" alt="#">
                         <div class="carousel-caption d-none d-sm-block carousel-caption-overlay">
-                            <h5 class="font-weight-bold text-white">"Evening Walk"</h5>
-                            <p class="text-white">55x75</p>
+                            <h5 class="font-weight-bold text-white" th:text="${image.getName()}"></h5>
+                            <p class="text-white" th:text="${image.getDimensions()}"></p>
                         </div>
                     </div>
                 </div>
