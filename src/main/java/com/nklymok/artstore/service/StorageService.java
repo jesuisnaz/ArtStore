@@ -3,7 +3,6 @@ package com.nklymok.artstore.service;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.nklymok.artstore.config.S3Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,9 +28,7 @@ public class StorageService {
 
     public void uploadFile(MultipartFile multipartFile, String category) {
          File file = convertMultipartFileToFile(multipartFile);
-         String filename = file.getName();
-         String path = String.format("%s/%s", category, filename);
-         putFileIntoS3(path, file);
+         putFileIntoS3(category, file);
 
     }
 
