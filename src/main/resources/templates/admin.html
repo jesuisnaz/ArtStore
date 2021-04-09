@@ -44,10 +44,21 @@
         <!--Featured pictures-->
         <div class="container text-center">
             <h5 class="mb-4 font-weight-bold">Featured Pictures</h5>
+
+            <!--Image submission form-->
             <form action="/admin/add_featured" enctype="multipart/form-data" method="POST">
+                <input type="text" name="name" placeholder="Name of your artwork">
+                <input type="radio" name="category" value="featured" checked>
+                Featured
+                <input type="radio" name="category" value="services">
+                Services
+                <input type="radio" name="category" value="other">
+                Other
+                <input type="text" name="dimensions" placeholder="Dimensions">
                 <input type="file" name="file" value="Choose file">
                 <input type="submit" value="Upload">
             </form>
+
             <div id="carouselMyWork" class="carousel slide carousel-work" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button th:each="image, stat : ${featuredImages}"
@@ -61,7 +72,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item" th:each="image, stat : ${featuredImages}" th:classappend="${stat.index == 0 ? 'active' : ''}">
-                        <img th:src="*{'data:image/jpeg;base64,'+image}" class="d-block w-100" alt="#">
+                        <img th:src="*{'data:image/jpeg;base64,'+image.getValueBase64()}" class="d-block w-100" alt="#">
                         <div class="carousel-caption d-none d-sm-block carousel-caption-overlay">
                             <h5 class="font-weight-bold text-white">"Evening Walk"</h5>
                             <p class="text-white">55x75</p>

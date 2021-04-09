@@ -1,6 +1,8 @@
 package com.nklymok.artstore.controller;
 
-import com.nklymok.artstore.service.StorageService;
+import com.nklymok.artstore.enums.ArtworkCategory;
+import com.nklymok.artstore.model.Artwork;
+import com.nklymok.artstore.service.ArtworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,24 +13,25 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private final StorageService storageService;
+    private final ArtworkService artworkService;
 
     @Autowired
-    public AdminController(StorageService storageService) {
-        this.storageService = storageService;
+    public AdminController(ArtworkService artworkService) {
+        this.artworkService = artworkService;
     }
 
     @GetMapping
     public String showAdminPanel(Model model) {
-        model.addAttribute("featuredImages", storageService.getAllFeaturedAsBase64());
+        model.addAttribute("featuredImages", artworkService.getAllArtwork(ArtworkCategory.FEATURED));
         return "admin";
     }
 
     @PostMapping("/add_featured")
-    public String addFeatured(@ModelAttribute("file") MultipartFile file) {
-        if (file.getSize() > 0) {
-            storageService.uploadFile(file, "featured");
-        }
+    public String addFeatured(@ModelAttribute("file") MultipartFile file,
+                              @ModelAttribute("name") String name,
+                              @ModelAttribute("category") String category,
+                              @ModelAttribute("dimensions") String dimensions) {
+            artworkService.addArtwork(new Artwork(name, category, dimensions, file.getOriginalFilename()), file);
         return "redirect:/admin";
     }
 

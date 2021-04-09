@@ -2,7 +2,6 @@ package com.nklymok.artstore.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
-import io.netty.handler.codec.base64.Base64Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -46,24 +45,14 @@ public class StorageService {
         return file;
     }
 
-    private File s3ObjectToFile(S3Object object) {
-        File file = new File(object.getKey());
-        try (FileOutputStream outputStream = new FileOutputStream(file)) {
-            outputStream.write(object.getObjectContent().readAllBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
-
     private void putFileIntoS3(String filepath, File file) {
         amazonS3.putObject(
                 new PutObjectRequest(bucketName, String.format("%s/%s", filepath, file.getName()),
                         file).withCannedAcl(CannedAccessControlList.PublicRead));
     }
 
-    private List<String> getObjectKeys() {
-        ObjectListing listing = amazonS3.listObjects(bucketName, "featured/");
+    private List<String> getObjectKeys(String path) {
+        ObjectListing listing = amazonS3.listObjects(bucketName, path+"/");
         List<S3ObjectSummary> summaries = listing.getObjectSummaries();
         List<String> keys = new ArrayList<>();
         while (listing.isTruncated()) {
@@ -76,21 +65,27 @@ public class StorageService {
         return keys;
     }
 
-    public List<String> getAllFeaturedAsBase64() {
-        List<String> objectKeys = getObjectKeys();
+    public String getAsBase64(String key) throws IOException {
+        System.out.println("Passed key: " + key);
+        return Base64.getEncoder().encodeToString(amazonS3.getObject(bucketName, key).getObjectContent().readAllBytes());
+    }
+
+    public List<String> getAllAsBase64(String path) {
+        List<String> objectKeys = getObjectKeys(path);
         List<S3Object> objects = new ArrayList<>();
-        List<String> featured = new ArrayList<>();
+        List<String> b64Values = new ArrayList<>();
 
         for (String key : objectKeys) {
             objects.add(amazonS3.getObject(bucketName, key));
         }
         try {
             for (S3Object obj : objects) {
-                featured.add(Base64.getEncoder().encodeToString(obj.getObjectContent().readAllBytes()));
+                b64Values.add(Base64.getEncoder().encodeToString(obj.getObjectContent().readAllBytes()));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return featured;
+        return b64Values;
     }
+
 }
