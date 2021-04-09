@@ -48,36 +48,35 @@
                 <input type="file" name="file" value="Choose file">
                 <input type="submit" value="Upload">
             </form>
-<!--            <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center align-items-center">-->
-<!--                <div class="col d-flex justify-content-center">-->
-
-<!--                    <div class="card" style="width: 18rem;">-->
-<!--                        <div class="card-body"> &lt;!&ndash; dimensions in image &ndash;&gt;-->
-<!--                            <h5 class="card-title">Basic (<30x30)</h5>-->
-<!--                            <h6 class="card-subtitle mb-2 text-muted">$80</h6>-->
-<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col d-flex justify-content-center">-->
-<!--                    <div class="card" style="width: 18rem;">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">Standard (<50x50)</h5>-->
-<!--                            <h6 class="card-subtitle mb-2 text-muted">$168.99</h6>-->
-<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col d-flex justify-content-center">-->
-<!--                    <div class="card" style="width: 18rem;">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">Premium (Up to 100x100)</h5>-->
-<!--                            <h6 class="card-subtitle mb-2 text-muted">$359.99</h6>-->
-<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div id="carouselMyWork" class="carousel slide carousel-work" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button th:each="image, stat : ${featuredImages}"
+                            type="button" data-bs-target="#carouselMyWork"
+                            th:attrappend=
+                                    "data-bs-slide-to=${stat.index},
+                                     aria-current=${stat.index == 0}?true,
+                                     aria-label='Slide ' + ${stat.index + 1}"
+                            th:classappend="${stat.index == 0 ? 'active' : ''}">
+                    </button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item" th:each="image, stat : ${featuredImages}" th:classappend="${stat.index == 0 ? 'active' : ''}">
+                        <img th:src="*{'data:image/jpeg;base64,'+image}" class="d-block w-100" alt="#">
+                        <div class="carousel-caption d-none d-sm-block carousel-caption-overlay">
+                            <h5 class="font-weight-bold text-white">"Evening Walk"</h5>
+                            <p class="text-white">55x75</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMyWork" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselMyWork" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
 
     </div>
