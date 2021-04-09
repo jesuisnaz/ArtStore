@@ -1,7 +1,6 @@
 package com.nklymok.artstore.controller;
 
 import com.nklymok.artstore.enums.ArtworkCategory;
-import com.nklymok.artstore.repository.ArtworkRepository;
 import com.nklymok.artstore.service.ArtworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
