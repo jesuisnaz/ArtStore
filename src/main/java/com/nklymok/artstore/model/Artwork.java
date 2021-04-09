@@ -1,9 +1,11 @@
 package com.nklymok.artstore.model;
 
+import com.nklymok.artstore.enums.ArtworkCategory;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "artwork")
@@ -18,9 +20,9 @@ public class Artwork {
     @Column(name = "name")
     private String name;
 
-    @NotBlank
+    @NotNull
     @Column(name = "category")
-    private String category;
+    private ArtworkCategory category;
 
     @Column(name = "dimensions")
     private String dimensions;
@@ -35,14 +37,14 @@ public class Artwork {
     public Artwork() {
     }
 
-    public Artwork(@NotBlank String name, @NotBlank String category, String dimensions, @NotBlank String documentName) {
+    public Artwork(@NotBlank String name, @NotBlank ArtworkCategory category, String dimensions, @NotBlank String documentName) {
         this.name = name;
         this.category = category;
         this.dimensions = dimensions;
         this.documentName = documentName;
     }
 
-    public Artwork(@NotBlank String name, @NotBlank String category, String dimensions) {
+    public Artwork(@NotBlank String name, @NotBlank ArtworkCategory category, String dimensions) {
         this.name = name;
         this.category = category;
         this.dimensions = dimensions;

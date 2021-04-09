@@ -27,6 +27,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#featuredPictures">Featured Pictures</a>
+                    </li>
                 </ul>
             </div>
             <ul class="navbar navbar-nav ms-auto">
@@ -42,18 +45,18 @@
         <h2 class="p-5 mb-4 font-weight-bolder">Admin Tools</h2>
 
         <!--Featured pictures-->
+        <section id="featuredPictures">
         <div class="container text-center">
             <h5 class="mb-4 font-weight-bold">Featured Pictures</h5>
 
             <!--Image submission form-->
             <form action="/admin/add_featured" enctype="multipart/form-data" method="POST">
                 <input type="text" name="name" placeholder="Name of your artwork">
-                <input type="radio" name="category" value="featured" checked>
-                Featured
-                <input type="radio" name="category" value="services">
-                Services
-                <input type="radio" name="category" value="other">
-                Other
+                <select name="category">
+                    <option th:each="category : ${T(com.nklymok.artstore.enums.ArtworkCategory).values()}"
+                    th:value="${category}" th:text="${category.getValue()}">
+                    </option>
+                </select>
                 <input type="text" name="dimensions" placeholder="Dimensions">
                 <input type="file" name="file" value="Choose file">
                 <input type="submit" value="Upload">
@@ -89,6 +92,7 @@
                 </button>
             </div>
         </div>
+        </section>
 
     </div>
 </main>

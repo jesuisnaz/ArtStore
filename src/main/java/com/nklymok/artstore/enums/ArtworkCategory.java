@@ -1,7 +1,9 @@
 package com.nklymok.artstore.enums;
 
 public enum ArtworkCategory {
-    FEATURED("featured");
+    FEATURED("featured"),
+    SERVICES("services"),
+    OTHER("other");
 
     private final String category;
 
@@ -9,7 +11,7 @@ public enum ArtworkCategory {
         this.category = category;
     }
 
-    public String getCategory() {
+    public String getValue() {
         return category;
     }
 }

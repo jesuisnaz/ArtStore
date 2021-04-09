@@ -24,11 +24,11 @@ public class ArtworkService {
     }
 
     public List<Artwork> getAllArtwork(ArtworkCategory category) {
-        List<Artwork> artworks = artworkRepository.getAllByCategory(category.getCategory());
+        List<Artwork> artworks = artworkRepository.getAllByCategory(category);
         for (Artwork artwork : artworks) {
             if (artwork.getValueBase64() != null) continue;
             try {
-                artwork.setValueBase64(storageService.getAsBase64(category.getCategory()+"/"+artwork.getDocumentName()));
+                artwork.setValueBase64(storageService.getAsBase64(category.getValue()+"/"+artwork.getDocumentName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -38,7 +38,7 @@ public class ArtworkService {
 
     public void addArtwork(Artwork artwork, MultipartFile file) {
         if (file.getSize() > 0) {
-            storageService.uploadFile(file, artwork.getCategory());
+            storageService.uploadFile(file, artwork.getCategory().getValue());
         } else {
             throw new IllegalArgumentException("File must be at least 1 byte in size");
         }

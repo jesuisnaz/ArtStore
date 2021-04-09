@@ -29,7 +29,7 @@ public class AdminController {
     @PostMapping("/add_featured")
     public String addFeatured(@ModelAttribute("file") MultipartFile file,
                               @ModelAttribute("name") String name,
-                              @ModelAttribute("category") String category,
+                              @ModelAttribute("category") ArtworkCategory category,
                               @ModelAttribute("dimensions") String dimensions) {
             artworkService.addArtwork(new Artwork(name, category, dimensions, file.getOriginalFilename()), file);
         return "redirect:/admin";
