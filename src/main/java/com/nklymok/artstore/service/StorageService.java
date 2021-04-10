@@ -34,6 +34,29 @@ public class StorageService {
 
     }
 
+    public String getAsBase64(String key) throws IOException {
+        System.out.println("Passed key: " + key);
+        return Base64.getEncoder().encodeToString(amazonS3.getObject(bucketName, key).getObjectContent().readAllBytes());
+    }
+
+    public List<String> getAllAsBase64(String path) {
+        List<String> objectKeys = getObjectKeys(path);
+        List<S3Object> objects = new ArrayList<>();
+        List<String> b64Values = new ArrayList<>();
+
+        for (String key : objectKeys) {
+            objects.add(amazonS3.getObject(bucketName, key));
+        }
+        try {
+            for (S3Object obj : objects) {
+                b64Values.add(Base64.getEncoder().encodeToString(obj.getObjectContent().readAllBytes()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return b64Values;
+    }
+
     private File multipartFileToFile(MultipartFile multipartFile) {
         File file = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
@@ -63,29 +86,6 @@ public class StorageService {
             keys.add(summary.getKey());
         }
         return keys;
-    }
-
-    public String getAsBase64(String key) throws IOException {
-        System.out.println("Passed key: " + key);
-        return Base64.getEncoder().encodeToString(amazonS3.getObject(bucketName, key).getObjectContent().readAllBytes());
-    }
-
-    public List<String> getAllAsBase64(String path) {
-        List<String> objectKeys = getObjectKeys(path);
-        List<S3Object> objects = new ArrayList<>();
-        List<String> b64Values = new ArrayList<>();
-
-        for (String key : objectKeys) {
-            objects.add(amazonS3.getObject(bucketName, key));
-        }
-        try {
-            for (S3Object obj : objects) {
-                b64Values.add(Base64.getEncoder().encodeToString(obj.getObjectContent().readAllBytes()));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return b64Values;
     }
 
 }
