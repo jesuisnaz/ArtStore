@@ -2,7 +2,7 @@ package com.nklymok.artstore.controller;
 
 import com.nklymok.artstore.exception.UserAlreadyExistsException;
 import com.nklymok.artstore.model.User;
-import com.nklymok.artstore.service.UserService;
+import com.nklymok.artstore.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @RequestMapping("/register")
 public class RegistrationController {
 
-    private UserService userService;
+    private IUserService userService;
 
     @GetMapping
     public String showRegister(@ModelAttribute("user") User user) {
@@ -43,7 +43,7 @@ public class RegistrationController {
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public void setUserService(IUserService userService) {
         this.userService = userService;
     }
 }

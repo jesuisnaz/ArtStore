@@ -1,7 +1,7 @@
 package com.nklymok.artstore.controller;
 
 import com.nklymok.artstore.enums.ArtworkCategory;
-import com.nklymok.artstore.service.ArtworkService;
+import com.nklymok.artstore.service.IArtworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class AppController {
 
-    private final ArtworkService artworkService;
+    private final IArtworkService artworkService;
 
     @Autowired
-    public AppController(ArtworkService artworkService) {
+    public AppController(IArtworkService artworkService) {
         this.artworkService = artworkService;
     }
 

@@ -1,6 +1,6 @@
 package com.nklymok.artstore.config;
 
-import com.nklymok.artstore.service.UserService;
+import com.nklymok.artstore.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private UserService userService;
+    private IUserService userService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -58,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public void setUserService(IUserService userService) {
         this.userService = userService;
     }
 }

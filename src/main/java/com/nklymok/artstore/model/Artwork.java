@@ -1,7 +1,7 @@
 package com.nklymok.artstore.model;
 
 import com.nklymok.artstore.enums.ArtworkCategory;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -9,7 +9,10 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "artwork")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Artwork {
 
     @Id
@@ -33,9 +36,6 @@ public class Artwork {
 
     @Transient
     private String valueBase64;
-
-    public Artwork() {
-    }
 
     public Artwork(@NotBlank String name, @NotBlank ArtworkCategory category, String dimensions, @NotBlank String documentName) {
         this.name = name;
