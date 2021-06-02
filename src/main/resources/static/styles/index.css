@@ -52,7 +52,7 @@ body {
 }
 
 #carouselMyWork:hover > .carousel-indicators {
-    opacity: 0;
+    /*opacity: 0;*/
 }
 
 #carouselMyWork:hover > .carousel-inner .carousel-item .carousel-caption {
